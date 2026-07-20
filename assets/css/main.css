@@ -1390,10 +1390,6 @@ p + p{
   right: -1.5rem;
 }
 
-.bottom-0{
-  bottom: 0px;
-}
-
 .bottom-20{
   bottom: 5rem;
 }
@@ -1532,6 +1528,10 @@ p + p{
   margin-top: 0.5rem;
 }
 
+.block{
+  display: block;
+}
+
 .inline-block{
   display: inline-block;
 }
@@ -1646,10 +1646,6 @@ p + p{
 
 .w-3\.5{
   width: 0.875rem;
-}
-
-.w-32{
-  width: 8rem;
 }
 
 .w-8{
@@ -1888,6 +1884,10 @@ p + p{
   border-color: rgb(226 232 240 / var(--tw-border-opacity, 1));
 }
 
+.border-slate-200\/60{
+  border-color: rgb(226 232 240 / 0.6);
+}
+
 .border-slate-300{
   --tw-border-opacity: 1;
   border-color: rgb(203 213 225 / var(--tw-border-opacity, 1));
@@ -1896,11 +1896,6 @@ p + p{
 .border-white{
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
-}
-
-.bg-\[\#242C4F\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(36 44 79 / var(--tw-bg-opacity, 1));
 }
 
 .bg-\[\#25D366\]{
@@ -1961,10 +1956,6 @@ p + p{
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
-.bg-white\/20{
-  background-color: rgb(255 255 255 / 0.2);
 }
 
 .bg-white\/90{
@@ -2252,10 +2243,6 @@ p + p{
   opacity: 1;
 }
 
-.opacity-60{
-  opacity: 0.6;
-}
-
 .opacity-75{
   opacity: 0.75;
 }
@@ -2373,26 +2360,6 @@ p + p{
   /* Tailwind slate-600 */
 }
 
-.\[mask-image\:url\(\'\.\/assets\/img\/brand\/arca\.png\'\)\]{
-  -webkit-mask-image: url('./assets/img/brand/arca.png');
-          mask-image: url('./assets/img/brand/arca.png');
-}
-
-.\[mask-position\:center\]{
-  -webkit-mask-position: center;
-          mask-position: center;
-}
-
-.\[mask-repeat\:no-repeat\]{
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-}
-
-.\[mask-size\:contain\]{
-  -webkit-mask-size: contain;
-          mask-size: contain;
-}
-
 .hover\:scale-110:hover{
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
@@ -2446,10 +2413,6 @@ p + p{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.group:hover .group-hover\:opacity-100{
-  opacity: 1;
-}
-
 .group:hover .group-hover\:shadow-lg{
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
@@ -2482,6 +2445,10 @@ p + p{
 .dark\:border-slate-900:is(.dark *){
   --tw-border-opacity: 1;
   border-color: rgb(15 23 42 / var(--tw-border-opacity, 1));
+}
+
+.dark\:border-white\/10:is(.dark *){
+  border-color: rgb(255 255 255 / 0.1);
 }
 
 .dark\:bg-accent-dark-3:is(.dark *){
@@ -2557,11 +2524,6 @@ p + p{
 .dark\:bg-tertiary-dark-7:is(.dark *){
   --tw-bg-opacity: 1;
   background-color: rgb(20 184 166 / var(--tw-bg-opacity, 1));
-}
-
-.dark\:bg-white:is(.dark *){
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
 .dark\:from-body-dark-2:is(.dark *){
@@ -2660,6 +2622,10 @@ p + p{
   border-color: rgb(61 75 142 / var(--tw-border-opacity, 1));
 }
 
+.dark\:hover\:border-primary-dark-8\/40:hover:is(.dark *){
+  border-color: rgb(99 102 241 / 0.4);
+}
+
 .dark\:hover\:bg-body-dark-2\/80:hover:is(.dark *){
   background-color: rgb(22 32 51 / 0.8);
 }
@@ -2687,6 +2653,12 @@ p + p{
 .dark\:hover\:text-tertiary-dark-9:hover:is(.dark *){
   --tw-text-opacity: 1;
   color: rgb(94 234 212 / var(--tw-text-opacity, 1));
+}
+
+.dark\:hover\:shadow-\[0_0_20px_rgba\(99\2c 102\2c 241\2c 0\.15\)\]:hover:is(.dark *){
+  --tw-shadow: 0 0 20px rgba(99,102,241,0.15);
+  --tw-shadow-colored: 0 0 20px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .group:hover .dark\:group-hover\:text-primary-dark-9:is(.dark *){
