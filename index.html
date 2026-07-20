@@ -101,7 +101,7 @@
       </div>
 
       <!-- Mobile Menu -->
-      <div id="mobileMenu" class="fixed top-20 inset-x-0 bottom-0 bg-white dark:bg-slate-900 z-40 lg:hidden hidden flex-col overflow-y-auto w-full">
+      <div id="mobileMenu" class="fixed top-20 inset-x-0 bg-white dark:bg-slate-900 z-40 lg:hidden hidden flex-col overflow-y-auto w-full">
         <nav class="flex flex-col items-center justify-center min-h-full gap-8 py-8 px-6" role="navigation" aria-label="Navegación móvil">
           <a href="#inicio" class="text-2xl font-display font-semibold text-slate-900 hover:text-primary-7 transition-colors mobile-link dark:text-white">Inicio</a>
           <a href="#servicios" class="text-2xl font-display font-semibold text-slate-900 hover:text-primary-7 transition-colors mobile-link dark:text-white">Servicios</a>
@@ -649,31 +649,33 @@
       });
 
       // ===================== MOBILE MENU =====================
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileLinks = document.querySelectorAll('.mobile-link');
-      let menuOpen = false;
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
 
-      function toggleMobileMenu(open) {
-        menuOpen = open !== undefined ? open : !menuOpen;
-        
-        if (menuOpen) {
-          mobileMenu.classList.remove('hidden');
-          mobileMenu.classList.add('flex');
-        } else {
-          mobileMenu.classList.add('hidden');
-          mobileMenu.classList.remove('flex');
-        }
-        
-        mobileMenuBtn.setAttribute('aria-expanded', menuOpen);
-        mobileMenuBtn.innerHTML = menuOpen ? '<i class="lni lni-close text-2xl"></i>' : '<i class="lni lni-menu text-2xl"></i>';
-        document.body.style.overflow = menuOpen ? 'hidden' : '';
-      }
+      mobileMenuBtn.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          mobileMenu.classList.toggle("flex");
 
-      mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+          const expanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
+
+          mobileMenuBtn.setAttribute("aria-expanded", !expanded);
+
+          mobileMenuBtn.innerHTML = expanded
+              ? '<i class="lni lni-menu text-2xl"></i>'
+              : '<i class="lni lni-close text-2xl"></i>';
+
+          document.body.style.overflow = expanded ? "" : "hidden";
+      });
 
       mobileLinks.forEach(link => {
-        link.addEventListener('click', () => toggleMobileMenu(false));
+          link.addEventListener("click", () => {
+              mobileMenu.classList.add("hidden");
+              mobileMenu.classList.remove("flex");
+              mobileMenuBtn.innerHTML = '<i class="lni lni-menu text-2xl"></i>';
+              mobileMenuBtn.setAttribute("aria-expanded", "false");
+              document.body.style.overflow = "";
+          });
       });
 
       // ===================== SCROLL REVEAL =====================
