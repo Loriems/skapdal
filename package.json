@@ -1,0 +1,33 @@
+{
+  "name": "skapdal-tailwind",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "tw-install": "npm install -D tailwindcss",
+    "tw-init": "npx tailwindcss init",
+    "tw-build": "npx tailwindcss -i ./src/css/tailwind.css -o ./assets/css/main.css --watch",
+    "tw-minify": "npx tailwindcss -o ./assets/css/main.min.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loriems/skapdal.git"
+  },
+  "keywords": [
+    "company",
+    "landing page"
+  ],
+  "author": "Vi",
+  "license": "MIT",
+  "description": "A landing page template built with Tailwind CSS.",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.0.0",
+    "@fontsource/roboto": "^5.0.0",
+    "@fontsource/space-grotesk": "^5.0.0",
+    "glightbox": "^3.3.0",
+    "scrollreveal": "^4.0.9",
+    "swiper": "^14.0.6"
+  }
+}

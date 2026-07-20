@@ -1,0 +1,263 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar { 
+  width: 8px; 
+}
+html:not(.dark) ::-webkit-scrollbar-track { 
+  background: #F8FAFC; 
+}
+html.dark ::-webkit-scrollbar-track { 
+  background: #111827; 
+}
+::-webkit-scrollbar-thumb { 
+  background: #6366F1; 
+  border-radius: 4px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+  background: #4F46E5; 
+}
+html { 
+  scroll-behavior: smooth; 
+}
+
+/* Grid pattern */
+.grid-pattern {
+  background-image: linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+html.dark .grid-pattern {
+  background-image: linear-gradient(rgba(99,102,241,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.06) 1px, transparent 1px);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(203,213,225,0.3);
+}
+html.dark .glass {
+  background: rgba(17,24,39,0.85);
+  border: 1px solid rgba(51,65,85,0.4);
+}
+.glass-card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(203,213,225,0.25);
+}
+html.dark .glass-card {
+  background: rgba(17,24,39,0.6);
+  border: 1px solid rgba(51,65,85,0.3);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #14B8A6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effects */
+.glow-primary { 
+  box-shadow: 0 0 40px rgba(99,102,241,0.12); 
+}
+.glow-primary:hover { 
+  box-shadow: 0 0 60px rgba(99,102,241,0.2); 
+}
+
+/* Service cards animation */
+.service-card { 
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.service-card:hover { 
+  transform: translateY(-8px); 
+  box-shadow: 0 20px 40px rgba(15,23,42,0.1); 
+}
+html.dark .service-card:hover { 
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3); 
+}
+.service-card:hover .service-icon { 
+  transform: scale(1.1) rotate(5deg); 
+}
+.service-icon { 
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+/* Nav link underline effect */
+.nav-link { 
+  position: relative; 
+}
+.nav-link::after { 
+  content: ''; 
+  position: absolute; 
+  bottom: -2px; 
+  left: 0; 
+  width: 0; 
+  height: 2px; 
+  background: linear-gradient(90deg, #6366F1, #14B8A6); 
+  transition: width 0.3s ease; 
+}
+.nav-link:hover::after, .nav-link.active::after { 
+  width: 100%; 
+}
+
+/* Chat widget */
+.chat-window { 
+  transform: translateY(20px) scale(0.95); 
+  opacity: 0; 
+  pointer-events: none; 
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.chat-window.active { 
+  transform: translateY(0) scale(1); 
+  opacity: 1; 
+  pointer-events: auto; 
+}
+
+/* Pulse animation */
+@keyframes customPulse { 
+  0%, 100% { transform: scale(1); opacity: 1; } 
+  50% { transform: scale(1.5); opacity: 0; } 
+}
+.pulse-ring::before { 
+  content: ''; 
+  position: absolute; 
+  inset: -4px; 
+  border-radius: 50%; 
+  background: #22c55e; 
+  animation: customPulse 2s infinite; 
+  z-index: -1; 
+}
+
+/* Loader animation */
+.loader-grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 8px; 
+  width: 60px; 
+  height: 60px; 
+}
+.loader-grid div { 
+  background: #6366F1; 
+  border-radius: 4px; 
+  animation: gridPulse 1.2s ease-in-out infinite; 
+}
+.loader-grid div:nth-child(1) { animation-delay: 0s; }
+.loader-grid div:nth-child(2) { animation-delay: 0.1s; }
+.loader-grid div:nth-child(3) { animation-delay: 0.2s; }
+.loader-grid div:nth-child(4) { animation-delay: 0.3s; }
+.loader-grid div:nth-child(5) { animation-delay: 0.4s; }
+.loader-grid div:nth-child(6) { animation-delay: 0.5s; }
+.loader-grid div:nth-child(7) { animation-delay: 0.6s; }
+.loader-grid div:nth-child(8) { animation-delay: 0.7s; }
+.loader-grid div:nth-child(9) { animation-delay: 0.8s; }
+
+@keyframes gridPulse { 
+  0%, 100% { opacity: 0.3; transform: scale(0.8); } 
+  50% { opacity: 1; transform: scale(1); } 
+}
+
+/* Scroll reveal states */
+.reveal { 
+  opacity: 0; 
+  transform: translateY(40px); 
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.reveal.visible { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+
+/* Responsive tweaks */
+@media (max-width: 1023px) {
+  .mobile-menu { 
+    transform: translateX(100%); 
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+  }
+  .mobile-menu.open { 
+    transform: translateX(0); 
+  }
+}
+@media (max-width: 640px) {
+  .chat-box { 
+    inset: 0; 
+    width: 100%; 
+    height: 100dvh; 
+    max-height: 100dvh; 
+    border-radius: 0; 
+  }
+}
+
+/* Gradient ambient orbs */
+.gradient-orb { 
+  position: absolute; 
+  border-radius: 50%; 
+  filter: blur(100px); 
+  opacity: 0.25; 
+  pointer-events: none; 
+}
+html.dark .gradient-orb { 
+  opacity: 0.15; 
+}
+
+.stat-card {
+  background: linear-gradient(135deg, rgba(99,102,241,0.05) 0%, rgba(20,184,166,0.05) 100%);
+  border: 1px solid rgba(99,102,241,0.1);
+}
+html.dark .stat-card {
+  background: linear-gradient(135deg, rgba(99,102,241,0.1) 0%, rgba(20,184,166,0.08) 100%);
+  border: 1px solid rgba(99,102,241,0.2);
+}
+
+.theme-toggle { 
+  transition: all 0.3s ease; 
+}
+.theme-toggle:hover { 
+  transform: rotate(20deg); 
+}
+
+#scrollTopBtn {
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+#scrollTopBtn.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+#scrollTopBtn.hide {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(16px) !important;
+}
+/* Estilos globales para la barra de scroll */
+@layer utilities {
+  /* Ancho del scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Track (Fondo del canal) */
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9; /* Tailwind slate-100 para modo claro */
+  }
+  .dark ::-webkit-scrollbar-track {
+    background: #0f172a; /* Tailwind slate-900 para modo oscuro */
+  }
+
+  /* Thumb (Barra deslizante) */
+  ::-webkit-scrollbar-thumb {
+    background: #94a3b8; /* Tailwind slate-400 */
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748b; /* Tailwind slate-500 */
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: #334155; /* Tailwind slate-700 */
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #475569; /* Tailwind slate-600 */
+  }
+}
