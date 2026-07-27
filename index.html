@@ -25,7 +25,7 @@
 
     <meta name="theme-color" content="#6366F1" id="themeColorMeta" />
     <meta name="msapplication-TileColor" content="#6366F1" />
-    <link rel="icon" type="image/svg+xml" href="./assets/favicon/favicon.svg" />
+    <link rel="icon" type="image/png" href="./assets/favicon/favicon.png" />
     <link rel="manifest" href="./assets/favicon/site.webmanifest" />
 
     <link rel="stylesheet" href="./assets/css/lineicons.css" />
@@ -61,10 +61,19 @@
         <div class="flex items-center justify-between h-20">
           <!-- Logo -->
           <a href="#" class="flex items-center gap-3 group" aria-label="Skapdal - Inicio">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-6 to-primary-8 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-primary-6/30 transition-all duration-300">
-              <span class="gradient-text text-slate-900 dark:text-white font-display font-bold text-lg">S</span>
-            </div>
-            <span class="font-display font-bold text-xl text-slate-900 tracking-tight dark:text-white">Skapdal</span>
+            <!-- Logo para Modo Claro -->
+            <img 
+              src="assets/img/logo_black.png" 
+              alt="Skapdal Logo" 
+              class="h-10 w-auto object-contain block dark:hidden group-hover:opacity-90 transition-opacity duration-300" 
+            />
+            
+            <!-- Logo para Modo Oscuro -->
+            <img 
+              src="assets/img/logo_white.png" 
+              alt="Skapdal Logo" 
+              class="h-10 w-auto object-contain hidden dark:block group-hover:opacity-90 transition-opacity duration-300" 
+            />
           </a>
 
           <!-- Desktop Navigation -->
@@ -458,13 +467,23 @@
       <div class="container mx-auto px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div class="lg:col-span-2">
-            <a href="#" class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-6 to-primary-8 flex items-center justify-center">
-                <span class="gradient-text text-white font-display font-bold text-lg">S</span>
-              </div>
-              <span class="font-display font-bold text-xl text-slate-900 tracking-tight dark:text-white">Skapdal</span>
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group" aria-label="Skapdal - Inicio">
+              <!-- Logo para Modo Claro -->
+              <img 
+                src="assets/img/logo_black.png" 
+                alt="Skapdal Logo" 
+                class="h-10 w-auto object-contain block dark:hidden group-hover:opacity-90 transition-opacity duration-300" 
+              />
+              
+              <!-- Logo para Modo Oscuro -->
+              <img 
+                src="assets/img/logo_white.png" 
+                alt="Skapdal Logo" 
+                class="h-10 w-auto object-contain hidden dark:block group-hover:opacity-90 transition-opacity duration-300" 
+              />
             </a>
-            <p class="text-slate-600 leading-relaxed max-w-md mb-6 dark:text-slate-300">
+                        <p class="text-slate-600 leading-relaxed max-w-md mb-6 dark:text-slate-300">
               Código eficiente. Soluciones inteligentes. Trato directo. Especialistas en soluciones informáticas, desarrollo de software a medida y consultoría IT para organizaciones que buscan innovar.
             </p>
             <div class="flex items-center gap-4">
