@@ -9,7 +9,7 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/assets/favicon/favicon.png",
+      "src": "/assets/favicon/logo_ps.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any"
