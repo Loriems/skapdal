@@ -539,63 +539,112 @@
     </footer>
 
     <style>
-      .bpw-widget-btn.bpw-floating-button {
-        background: #6366f1 !important;
-        box-shadow: 0 4px 20px rgba(99,102,241,0.5) !important;
-        width: 56px !important;
-        height: 56px !important;
+      #bp-bubble-custom {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 10000;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #6366f1;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(99,102,241,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s, box-shadow 0.2s;
       }
-      .bpw-widget-btn.bpw-floating-button:hover {
-        background: #4f46e5 !important;
-        transform: scale(1.08) !important;
-        box-shadow: 0 6px 28px rgba(99,102,241,0.7) !important;
+      #bp-bubble-custom:hover {
+        transform: scale(1.08);
+        box-shadow: 0 6px 28px rgba(99,102,241,0.7);
       }
-      .bpw-header-container {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+      #bp-bubble-custom svg { width: 26px; height: 26px; fill: white; }
+      #bp-bubble-custom .dot {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        width: 13px;
+        height: 13px;
+        background: #22c55e;
+        border-radius: 50%;
+        border: 2px solid white;
       }
-      .bpw-send-button {
-        background: #6366f1 !important;
-        border-radius: 50% !important;
+      #bp-fullscreen-wrap {
+        visibility: hidden;
+        pointer-events: none;
+        position: fixed;
+        bottom: 92px;
+        right: 24px;
+        z-index: 9999;
+        width: 420px;
+        height: 80vh;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
       }
-      .bpw-send-button:hover { background: #4f46e5 !important; }
-      .bpw-from-user .bpw-chat-bubble {
-        background: #6366f1 !important;
-        color: #ffffff !important;
-        border-radius: 16px 0 16px 16px !important;
+      #bp-fullscreen-wrap.open {
+        visibility: visible;
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0s;
       }
-      .bpw-from-bot .bpw-chat-bubble {
-        border-radius: 0 16px 16px 16px !important;
+      #bp-fullscreen-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+      @media (max-width: 640px) {
+        #bp-fullscreen-wrap {
+          bottom: 84px;
+          right: 0;
+          left: 0;
+          width: 100%;
+          height: calc(100vh - 84px);
+          border-radius: 0;
+        }
       }
-      .bpw-quick-reply-button {
-        border: 2px solid #6366f1 !important;
-        color: #6366f1 !important;
-        border-radius: 20px !important;
-      }
-      .bpw-quick-reply-button:hover {
-        background: #6366f1 !important;
-        color: #fff !important;
-      }
-      .bpw-powered { display: none !important; }
     </style>
-    <script src="https://bot.skapdal.com/assets/modules/channel-web/inject.js"></script>
+
+    <div id="bp-fullscreen-wrap">
+      <iframe id="bp-chat-iframe" allow="microphone" title="Chat Skapdal"></iframe>
+    </div>
+
     <script>
-      window.addEventListener('load', function() {
-        window.botpressWebChat.init({
-          botId: 'skapdal-final-v4',
+      (function() {
+        var STORAGE_KEY_UID = 'skapdal-uid';
+        var uid = localStorage.getItem(STORAGE_KEY_UID);
+        if (!uid) {
+          uid = 'u-' + Math.random().toString(36).substring(2, 10) + '-' + Date.now().toString(36);
+          localStorage.setItem(STORAGE_KEY_UID, uid);
+        }
+        var config = {
+          botId: 'skapdal-final-v5',
+          host: 'https://bot.skapdal.com',
           enableReset: true,
-          enableTranscriptDownload: false,
-          showPoweredBy: false,
           locale: 'es',
           backgroundColor: '#1a1a2e',
           textColorOnBackground: '#ffffff',
           foregroundColor: '#6366f1',
-          textColorOnForeground: '#ffffff',
+          showPoweredBy: false,
           botName: 'Skapdal',
           botConvoTitle: '¿En qué podemos ayudarte?',
-          botConvoDescription: 'Contanos tu proyecto y te contactamos.'
-        });
-      });
+          userId: uid
+        };
+        var options = { hideWidget: true, config: config };
+        var encoded = encodeURIComponent(JSON.stringify(options));
+        var src = 'https://bot.skapdal.com/lite/skapdal-final-v4/?m=channel-web&v=Fullscreen&options=' + encoded;
+        document.getElementById('bp-chat-iframe').src = src;
+      })();
     </script>
+
+    <button id="bp-bubble-custom" aria-label="Abrir chat" onclick="document.getElementById('bp-fullscreen-wrap').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l4.93-1.37A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.2-.49-4.49-1.32l-.32-.19-3.32.92.92-3.32-.19-.32A7.96 7.96 0 014 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8z"/>
+      </svg>
+      <span class="dot"></span>
+    </button>
 
     <button id="scrollTopBtn" type="button"
           class="fixed bottom-8 left-8 z-50 w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xl hover:bg-indigo-700 transition-all duration-300 opacity-0 pointer-events-none"
@@ -752,6 +801,7 @@
       if (typeof GLightbox !== 'undefined') {
         GLightbox({ selector: '.video-popup', type: 'video', source: 'youtube', width: 900, autoplayVideos: true });
       }
+      
     </script>
   </body>
 </html>
