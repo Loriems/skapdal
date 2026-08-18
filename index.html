@@ -544,38 +544,20 @@
         box-shadow: 0 4px 20px rgba(99,102,241,0.5) !important;
         width: 56px !important;
         height: 56px !important;
+        bottom: 24px !important;
+        right: 24px !important;
       }
       .bpw-widget-btn.bpw-floating-button:hover {
         background: #4f46e5 !important;
         transform: scale(1.08) !important;
         box-shadow: 0 6px 28px rgba(99,102,241,0.7) !important;
       }
-      .bpw-header-container {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
-      }
-      .bpw-send-button {
-        background: #6366f1 !important;
-        border-radius: 50% !important;
-      }
-      .bpw-send-button:hover { background: #4f46e5 !important; }
-      .bpw-from-user .bpw-chat-bubble {
-        background: #6366f1 !important;
-        color: #ffffff !important;
-        border-radius: 16px 0 16px 16px !important;
-      }
-      .bpw-from-bot .bpw-chat-bubble {
-        border-radius: 0 16px 16px 16px !important;
-      }
-      .bpw-quick-reply-button {
-        border: 2px solid #6366f1 !important;
-        color: #6366f1 !important;
-        border-radius: 20px !important;
-      }
-      .bpw-quick-reply-button:hover {
-        background: #6366f1 !important;
-        color: #fff !important;
-      }
       .bpw-powered { display: none !important; }
+      #bp-widget {
+        height: 70vh !important;
+        max-height: 70vh !important;
+        min-height: unset !important;
+      }
     </style>
     <script src="https://bot.skapdal.com/assets/modules/channel-web/inject.js"></script>
     <script>
@@ -593,7 +575,8 @@
           textColorOnForeground: '#ffffff',
           botName: 'Skapdal',
           botConvoTitle: '¿En qué podemos ayudarte?',
-          botConvoDescription: 'Contanos tu proyecto y te contactamos.'
+          botConvoDescription: 'Contanos tu proyecto y te contactamos.',
+          customStylesheet: 'https://bot.skapdal.com/assets/modules/channel-web/custom.css'
         });
       });
     </script>
@@ -753,6 +736,7 @@
       if (typeof GLightbox !== 'undefined') {
         GLightbox({ selector: '.video-popup', type: 'video', source: 'youtube', width: 900, autoplayVideos: true });
       }
+      
     </script>
   </body>
 </html>
