@@ -608,12 +608,36 @@
     </style>
 
     <div id="bp-fullscreen-wrap">
-      <iframe
-        src="https://bot.skapdal.com/lite/skapdal-final-v4/?m=channel-web&v=Fullscreen&options=%7B%22hideWidget%22%3Atrue%2C%22config%22%3A%7B%22botId%22%3A%22skapdal-final-v4%22%2C%22host%22%3A%22https%3A//bot.skapdal.com%22%2C%22enableReset%22%3Atrue%2C%22locale%22%3A%22es%22%2C%22backgroundColor%22%3A%22%231a1a2e%22%2C%22textColorOnBackground%22%3A%22%23ffffff%22%2C%22foregroundColor%22%3A%22%236366f1%22%2C%22showPoweredBy%22%3Afalse%2C%22botName%22%3A%22Skapdal%22%2C%22botConvoTitle%22%3A%22%C2%BFEn%20qu%C3%A9%20podemos%20ayudarte%3F%22%7D%7D"
-        allow="microphone"
-        title="Chat Skapdal">
-      </iframe>
+      <iframe id="bp-chat-iframe" allow="microphone" title="Chat Skapdal"></iframe>
     </div>
+
+    <script>
+      (function() {
+        var STORAGE_KEY_UID = 'skapdal-uid';
+        var uid = localStorage.getItem(STORAGE_KEY_UID);
+        if (!uid) {
+          uid = 'u-' + Math.random().toString(36).substring(2, 10) + '-' + Date.now().toString(36);
+          localStorage.setItem(STORAGE_KEY_UID, uid);
+        }
+        var config = {
+          botId: 'skapdal-final-v4',
+          host: 'https://bot.skapdal.com',
+          enableReset: true,
+          locale: 'es',
+          backgroundColor: '#1a1a2e',
+          textColorOnBackground: '#ffffff',
+          foregroundColor: '#6366f1',
+          showPoweredBy: false,
+          botName: 'Skapdal',
+          botConvoTitle: '¿En qué podemos ayudarte?',
+          userId: uid
+        };
+        var options = { hideWidget: true, config: config };
+        var encoded = encodeURIComponent(JSON.stringify(options));
+        var src = 'https://bot.skapdal.com/lite/skapdal-final-v4/?m=channel-web&v=Fullscreen&options=' + encoded;
+        document.getElementById('bp-chat-iframe').src = src;
+      })();
+    </script>
 
     <button id="bp-bubble-custom" aria-label="Abrir chat" onclick="document.getElementById('bp-fullscreen-wrap').classList.toggle('open')">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
