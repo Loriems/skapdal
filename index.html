@@ -672,11 +672,7 @@
 
         
         const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          applyTheme(saved);
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          applyTheme('dark');
-        }
+        applyTheme(saved === 'dark' ? 'dark' : 'light');
 
         
         themeToggle.addEventListener('click', () => {
@@ -686,12 +682,6 @@
           localStorage.setItem(STORAGE_KEY, newTheme);
         });
 
-        
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-          if (!localStorage.getItem(STORAGE_KEY)) {
-            applyTheme(e.matches ? 'dark' : 'light');
-          }
-        });
       })();
 
       
