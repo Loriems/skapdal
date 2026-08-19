@@ -620,7 +620,7 @@
           localStorage.setItem(STORAGE_KEY_UID, uid);
         }
         var config = {
-          botId: 'skapdal-final-v5',
+          botId: 'skapdal-final-v6',
           host: 'https://bot.skapdal.com',
           enableReset: true,
           locale: 'es',
@@ -634,7 +634,7 @@
         };
         var options = { hideWidget: true, config: config };
         var encoded = encodeURIComponent(JSON.stringify(options));
-        var src = 'https://bot.skapdal.com/lite/skapdal-final-v5/?m=channel-web&v=Fullscreen&options=' + encoded;
+        var src = 'https://bot.skapdal.com/lite/skapdal-final-v6/?m=channel-web&v=Fullscreen&options=' + encoded;
         document.getElementById('bp-chat-iframe').src = src;
       })();
     </script>
