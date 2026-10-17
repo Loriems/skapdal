@@ -2038,11 +2038,6 @@ img{
     bottom: 60px;
   }
 
-  .lg\:mx-0{
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-
   .lg\:mx-\[84px\]{
     margin-left: 84px;
     margin-right: 84px;
@@ -2070,6 +2065,10 @@ img{
 
   .lg\:mt-\[180px\]{
     margin-top: 180px;
+  }
+
+  .lg\:block{
+    display: block;
   }
 
   .lg\:flex{
