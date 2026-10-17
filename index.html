@@ -36,6 +36,8 @@
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-unlock');
     </script>
 
+    <script src="./assets/js/config.js"></script>
+
     <link rel="stylesheet" href="./assets/css/lineicons.css" />
     <link rel="stylesheet" href="./assets/css/main.css" />
 
@@ -408,18 +410,31 @@
         visibility: visible; pointer-events: auto; opacity: 1; transform: translateY(0) scale(1);
         transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0s;
       }
+      #bp-bubble-custom[hidden], #bp-fullscreen-wrap[hidden] { display: none; }
       #bp-fullscreen-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
       @media (max-width: 640px) {
         #bp-fullscreen-wrap { bottom: 84px; right: 0; left: 0; width: 100%; height: calc(100vh - 84px); border-radius: 0; }
       }
     </style>
 
-    <div id="bp-fullscreen-wrap">
+    <div id="bp-fullscreen-wrap" hidden>
       <iframe id="bp-chat-iframe" allow="microphone" title="Chat Skapdal"></iframe>
     </div>
 
+    <button id="bp-bubble-custom" hidden aria-label="Abrir chat" onclick="document.getElementById('bp-fullscreen-wrap').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l4.93-1.37A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.2-.49-4.49-1.32l-.32-.19-3.32.92.92-3.32-.19-.32A7.96 7.96 0 014 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8z"/>
+      </svg>
+      <span class="dot"></span>
+    </button>
+
     <script>
       (function() {
+        // El chat solo se carga si config.js lo activa (CHAT_ENABLED=true al generar la configuración)
+        if (!(window.SKAPDAL_CONFIG && window.SKAPDAL_CONFIG.chatEnabled)) return;
+        document.getElementById('bp-fullscreen-wrap').hidden = false;
+        document.getElementById('bp-bubble-custom').hidden = false;
+
         var STORAGE_KEY_UID = 'skapdal-uid';
         var uid = localStorage.getItem(STORAGE_KEY_UID);
         if (!uid) {
@@ -445,13 +460,6 @@
         document.getElementById('bp-chat-iframe').src = src;
       })();
     </script>
-
-    <button id="bp-bubble-custom" aria-label="Abrir chat" onclick="document.getElementById('bp-fullscreen-wrap').classList.toggle('open')">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l4.93-1.37A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.2-.49-4.49-1.32l-.32-.19-3.32.92.92-3.32-.19-.32A7.96 7.96 0 014 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8z"/>
-      </svg>
-      <span class="dot"></span>
-    </button>
 
     <button id="scrollTopBtn" type="button"
             class="fixed bottom-8 left-8 z-50 w-12 h-12 rounded-full bg-brand-blue text-white flex items-center justify-center shadow-xl hover:bg-brand-blue-deep transition-all duration-300 opacity-0 pointer-events-none"
