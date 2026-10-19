@@ -86,4 +86,3 @@ html.js-unlock.unlocked .unlock-item {
   background-image: linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
   background-size: 64px 64px;
 }
-.mini-icon { display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 6px; background: #EEF1FF; }
