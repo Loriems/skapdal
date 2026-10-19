@@ -65,7 +65,7 @@
     </div>
 
     <!-- Header -->
-    <header id="navbar" class="on-hero fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-ink-bg/90 backdrop-blur-md transition-[background-color,box-shadow] duration-300" role="banner">
+    <header id="navbar" class="on-hero fixed top-0 left-0 w-full z-50 bg-white dark:bg-ink-bg transition-[background-color,box-shadow] duration-300" role="banner">
       <div class="flex items-center justify-between h-20 max-w-[1440px] mx-auto px-5 lg:px-10 xl:px-20">
         <a href="#" class="flex items-center" aria-label="Skapdal - Inicio">
           <img src="assets/img/logo-skapdal-black.png" alt="Skapdal" class="logo-on-light h-6 lg:h-[30px] w-auto block dark:hidden" />
@@ -135,7 +135,7 @@
 
           <div class="hidden lg:block relative lg:mr-14 shrink-0" aria-hidden="true">
             <div style="--i:2" class="unlock-item phone relative w-[290px] h-[590px] rounded-[46px] bg-[#111321] p-[14px] shadow-[0_30px_80px_rgba(0,0,0,.55)] ring-1 ring-white/15">
-              <div class="absolute left-1/2 -translate-x-1/2 top-[14px] w-[118px] h-[26px] rounded-b-[16px] bg-[#111321] z-10"></div>
+              <div class="absolute left-1/2 -translate-x-1/2 top-[14px] w-[100px] h-[24px] rounded-b-[14px] bg-[#111321] z-10"></div>
               <img src="assets/img/hero/app-celular.webp" alt="" width="262" height="562" class="w-full h-full rounded-[34px] object-cover" />
             </div>
           </div>
@@ -469,11 +469,10 @@
 
       // Sombra del header al hacer scroll
       const navbar = document.getElementById('navbar');
-      const hero = document.getElementById('inicio');
       function updateNavbar() {
         navbar.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(15, 23, 42, 0.08)' : 'none';
         const menuOpen = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-        navbar.classList.toggle('on-hero', !menuOpen && window.scrollY < hero.offsetHeight - navbar.offsetHeight);
+        navbar.classList.toggle('on-hero', !menuOpen && window.scrollY <= 0);
       }
       window.addEventListener('scroll', updateNavbar, { passive: true });
 
